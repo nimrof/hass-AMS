@@ -418,7 +418,7 @@ class AmsHub:
         else:
             # _LOGGER.debug("sensors are the same, updating states")
             asyncio.run_coroutine_threadsafe(self._signal_update_sensors(),
-                                                 self._hass.loop).result()
+                                             self._hass.loop).result()
 
     async def _signal_new_sensor(self) -> None:
         async_dispatcher_send(self._hass, SIGNAL_NEW_AMS_SENSOR)

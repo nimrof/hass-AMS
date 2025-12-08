@@ -97,12 +97,12 @@ def parse_data(stored, data):
                             },
                         }
                         if key in ACTIVE_POWER_SENSORS:
-                                    sensor_data[key][SENSOR_ATTR][
-                                        ATTR_STATE_CLASS] = (
-                                            SensorStateClass.MEASUREMENT)
-                                    sensor_data[key][SENSOR_ATTR][
-                                        ATTR_DEVICE_CLASS] = (
-                                            SensorDeviceClass.POWER)
+                            sensor_data[key][SENSOR_ATTR][
+                                ATTR_STATE_CLASS] = (
+                                        SensorStateClass.MEASUREMENT)
+                            sensor_data[key][SENSOR_ATTR][
+                                ATTR_DEVICE_CLASS] = (
+                                    SensorDeviceClass.POWER)
                         _LOGGER.debug(
                             "%s, OBIS:%s, Index:%s, Type:%s Double OBIS",
                             key, item, (i, i + len(item)),

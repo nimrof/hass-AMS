@@ -150,12 +150,12 @@ def parse_data(stored, data):
                                 },
                             }
                             if key in ACTIVE_POWER_SENSORS:
-                                    sensor_data[key][SENSOR_ATTR][
-                                        ATTR_STATE_CLASS] = (
-                                            SensorStateClass.MEASUREMENT)
-                                    sensor_data[key][SENSOR_ATTR][
-                                        ATTR_DEVICE_CLASS] = (
-                                            SensorDeviceClass.POWER)
+                                sensor_data[key][SENSOR_ATTR][
+                                    ATTR_STATE_CLASS] = (
+                                        SensorStateClass.MEASUREMENT)
+                                sensor_data[key][SENSOR_ATTR][
+                                    ATTR_DEVICE_CLASS] = (
+                                        SensorDeviceClass.POWER)
                             if key in HOURLY_SENSORS:
                                 sensor_data[key][SENSOR_ATTR][
                                     HAN_METER_DATETIME] = han_data[
