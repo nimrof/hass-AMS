@@ -83,6 +83,8 @@ def parse_data(stored, data, swedish=False):
                 "timestamp": han_data["date_time"],
                 SENSOR_UOM: "W",
                 SENSOR_ICON: "mdi:gauge",
+                ATTR_STATE_CLASS: SensorStateClass.MEASUREMENT,
+                ATTR_DEVICE_CLASS: SensorDeviceClass.POWER,
             },
         }
         if not swedish:
@@ -112,6 +114,8 @@ def parse_data(stored, data, swedish=False):
             HAN_METER_SERIAL: han_data[HAN_METER_SERIAL],
             SENSOR_UOM: "W",
             SENSOR_ICON: "mdi:gauge",
+            ATTR_STATE_CLASS: SensorStateClass.MEASUREMENT,
+            ATTR_DEVICE_CLASS: SensorDeviceClass.POWER,
         },
     }
     han_data["active_power_n"] = byte_decode(
@@ -126,6 +130,8 @@ def parse_data(stored, data, swedish=False):
             HAN_METER_SERIAL: han_data[HAN_METER_SERIAL],
             SENSOR_UOM: "W",
             SENSOR_ICON: "mdi:gauge",
+            ATTR_STATE_CLASS: SensorStateClass.MEASUREMENT,
+            ATTR_DEVICE_CLASS: SensorDeviceClass.POWER,
         },
     }
     han_data["reactive_power_p"] = byte_decode(
@@ -140,6 +146,8 @@ def parse_data(stored, data, swedish=False):
             HAN_METER_SERIAL: han_data[HAN_METER_SERIAL],
             SENSOR_UOM: "VAr",
             SENSOR_ICON: "mdi:gauge",
+            ATTR_STATE_CLASS: SensorStateClass.MEASUREMENT,
+            ATTR_DEVICE_CLASS: SensorDeviceClass.POWER,
         },
     }
     han_data["reactive_power_n"] = byte_decode(
@@ -154,6 +162,8 @@ def parse_data(stored, data, swedish=False):
             HAN_METER_SERIAL: han_data[HAN_METER_SERIAL],
             SENSOR_UOM: "VAr",
             SENSOR_ICON: "mdi:gauge",
+            ATTR_STATE_CLASS: SensorStateClass.MEASUREMENT,
+            ATTR_DEVICE_CLASS: SensorDeviceClass.POWER,
         },
     }
     han_data["current_l1"] = byte_decode(

@@ -19,6 +19,8 @@ import pytest
 from homeassistant.util import dt as dt_util, location
 pytest_plugins = "pytest_homeassistant_custom_component"
 
+# Tillat bruk av socket i alle tester (trenger det for asyncio event loop på Windows)
+pytestmark = pytest.mark.enable_socket
 
 # This fixture enables loading custom integrations in all tests.
 # Remove to enable selective use of this fixture

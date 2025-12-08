@@ -10,6 +10,7 @@ from crccheck.crc import CrcX25
 from custom_components.ams.parsers import byte_decode, signed_decode
 from custom_components.ams.const import (
     ACTIVE_ENERGY_SENSORS,
+    ACTIVE_POWER_SENSORS,
     ATTR_DEVICE_CLASS,
     ATTR_STATE_CLASS,
     DATA_FLAG,
@@ -148,6 +149,13 @@ def parse_data(stored, data):
                                         SENSOR_ICON_MAP.get(key)),
                                 },
                             }
+                            if key in ACTIVE_POWER_SENSORS:
+                                    sensor_data[key][SENSOR_ATTR][
+                                        ATTR_STATE_CLASS] = (
+                                            SensorStateClass.MEASUREMENT)
+                                    sensor_data[key][SENSOR_ATTR][
+                                        ATTR_DEVICE_CLASS] = (
+                                            SensorDeviceClass.POWER)
                             if key in HOURLY_SENSORS:
                                 sensor_data[key][SENSOR_ATTR][
                                     HAN_METER_DATETIME] = han_data[
@@ -206,8 +214,14 @@ def parse_data(stored, data):
                                         "mdi:" +
                                         SENSOR_ICON_MAP.get(key)),
                                 },
-
                             }
+                            if key in ACTIVE_POWER_SENSORS:
+                                sensor_data[key][SENSOR_ATTR][
+                                    ATTR_STATE_CLASS] = (
+                                        SensorStateClass.MEASUREMENT)
+                                sensor_data[key][SENSOR_ATTR][
+                                    ATTR_DEVICE_CLASS] = (
+                                        SensorDeviceClass.POWER)
                             _LOGGER.debug(
                                 "%s, OBIS:%s, Index:%s, Type:%s Double OBIS",
                                 key, item, (i, i + len(item)),
@@ -254,8 +268,12 @@ def parse_data(stored, data):
                             SENSOR_ICON: (
                                 "mdi:" + SENSOR_ICON_MAP.get(key)),
                         },
-
                     }
+                    if key in ACTIVE_POWER_SENSORS:
+                        sensor_data[key][SENSOR_ATTR][ATTR_STATE_CLASS] = (
+                            SensorStateClass.MEASUREMENT)
+                        sensor_data[key][SENSOR_ATTR][ATTR_DEVICE_CLASS] = (
+                            SensorDeviceClass.POWER)
                     _LOGGER.debug(
                         "%s, OBIS:%s, Index:%s, Type:%s Single OBIS", key,
                         SENSOR_OBIS_MAP[key], (i, i + len(
