@@ -10,7 +10,8 @@ import voluptuous as vol
 
 from homeassistant.config_entries import ConfigEntry, SOURCE_IMPORT
 from homeassistant.const import Platform
-from homeassistant.core import Config, HomeAssistant
+from homeassistant.core import HomeAssistant
+from homeassistant.core_config import Config
 from homeassistant.helpers.dispatcher import async_dispatcher_send
 from custom_components.ams.parsers import aidon as Aidon
 from custom_components.ams.parsers import field_type
@@ -113,7 +114,7 @@ async def async_setup(hass: HomeAssistant, config: Config):
 
 async def async_setup_entry(hass: HomeAssistant, entry: ConfigEntry):
     """Set up AMS as config entry."""
-    _setup(hass, entry.data)
+    await hass.async_add_executor_job(_setup, hass, entry.data)
     await hass.config_entries.async_forward_entry_setups(entry, PLATFORMS)
     return True
 
